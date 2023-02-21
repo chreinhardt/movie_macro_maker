@@ -129,13 +129,18 @@ int main(int argc, char** argv)
 			macro << "readmark Particle40687.mark" << endl;
 
             macro << "psize gas 0" << endl;
-            macro << "readarray " << Filename << ".den" << endl;
+
             macro << "setbox 1 " << x << " " << y << " " << z << " " << Deltax << " " << Deltay << " " << Deltaz << endl;
             macro << "abox 1" << endl;
 
+#if 0
+            macro << "readarray " << Filename << ".den" << endl;
             /* change this for yarray or zarray */
             macro << "zarray gas revrain 0 18" << endl;
-			
+#endif 		
+            /* pkdgrav3 does not have array files as standard output. */
+            macro << "zgas rho 0 18" << endl;
+
 			//macro << "xall" << endl;
             //macro << "xarray gas revrain 0 12" << endl;
             //macro << "zgas logtemp 0 1.5" << endl;
